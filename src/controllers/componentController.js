@@ -51,8 +51,13 @@ const deletebyComponent = async (req, res) => {
     const deleteComponent = await ComponentsCollection.findOneAndDelete({
       _id: req.query.id,
     });
-    return res.status(200).send({ deleteComponent });
+    return res.status(200).send({
+      status: 200,
+      massage: "success",
+    });
   } catch (error) {
+    console.log(error);
+
     res.status(404).send({ message: "Server Problem" });
   }
 };

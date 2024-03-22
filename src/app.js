@@ -2,17 +2,16 @@ const express = require("express");
 const app = express();
 require("dotenv").config();
 const cors = require("cors");
-const corsConfig = {
-  origin: "#",
-  credential: true,
-  mathods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-};
-app.use(cors(corsConfig));
-app.options("", cors(corsConfig));
+
+app.use(cors());
+
+app.use(express.json());
 
 app.use(express.json());
 const ComponentsRouter = require("./routers/ComponentRouter");
+const CategoryRouter = require("./routers/CategoryRoute");
 app.use("/api/components", ComponentsRouter);
+app.use("/api/category", CategoryRouter);
 
 app.use((err, req, res, next) => {
   console.log(err);

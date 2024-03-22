@@ -5,11 +5,14 @@ const connectDB = async () => {
   mongoose.set("strictQuery", false);
   try {
     await mongoose
-      .connect(mongodbURL, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        dbName: "my-components",
-      })
+      .connect(
+        "mongodb+srv://my-component:my-component@cluster0.lbqcdjx.mongodb.net/",
+        {
+          useNewUrlParser: true,
+          useUnifiedTopology: true,
+          dbName: "my-components",
+        }
+      )
       .then(() => console.log("Database connection successful"))
       .catch((err) => console.log(err));
   } catch (error) {
